@@ -6,20 +6,48 @@ import { useCallback, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export function Header() {
-  const [foo,setFoo] = useState(1);
+  const [foo, setFoo] = useState(2);
+  const initialState = [
+    {id:1, name:'新規作成1'}
+  ]
+  const [state,setState] = useState(initialState);
 
-  const handleClick = useCallback((e) => {
-    setFoo(function (foo) {
-      return foo + 1;
-    });
-    alert(foo);
-  },[foo]);
+
+  const handleClick = (e) => {
+    setFoo((prevFoo) => prevFoo + 1);
+    console.log(foo);
+    setState((prevState) => [...prevState, {id:foo, name:'新規作成'+foo}]);
+  }
+
+
+
+
 
   return (
     <>
+
+
+
+
+      {/* <p>{state[0].name}</p> */}
+
+      <ul>
+        {state.map((item) => {
+          return (
+          <li key={item.id}>
+            {item.id}
+            {item.name}
+          </li>
+          );
+        })}
+      </ul>
+
+
       <button onClick={handleClick}>
-        ボタン
+        保存
       </button>
+
+
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
