@@ -1,12 +1,25 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useCallback, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export function Header() {
+  const [foo,setFoo] = useState(1);
+
+  const handleClick = useCallback((e) => {
+    setFoo(function (foo) {
+      return foo + 1;
+    });
+    alert(foo);
+  },[foo]);
+
   return (
     <>
+      <button onClick={handleClick}>
+        ボタン
+      </button>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
