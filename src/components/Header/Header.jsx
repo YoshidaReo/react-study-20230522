@@ -6,45 +6,72 @@ import { useCallback, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export function Header() {
-  const [foo, setFoo] = useState(2);
-  const initialState = [
-    {id:1, name:'新規作成1'}
-  ]
-  const [state,setState] = useState(initialState);
+  const [foo, setFoo] = useState(0);
+  const [state,setState] = useState([]);
+  const message = [];
+
+  const initialState = {id:foo, name:'新規作成'+String(foo)};
 
 
-  const handleClick = (e) => {
+  const handleAdd = useCallback((e) => {
     setFoo((prevFoo) => prevFoo + 1);
-    console.log(foo);
-    setState((prevState) => [...prevState, {id:foo, name:'新規作成'+foo}]);
-  }
+    // console.log(foo);
+    setState((prevState) => [...prevState, initialState]);
+  },[foo]);
 
+  const handleChange = useCallback((e) => {
+    
+    state.map((item,index) => {
+      // console.log(item);
+      // console.log(e);
 
-
+      if (item.id === 0) {
+        message.push({...item, name:e.target.value});
+      } else {
+        message.push(item);
+      }
+    });
+    console.log(message);
+    setState((state) => message);
+    
+    // setState(e.target.value.trim());
+  },[state]);
 
 
   return (
     <>
-
-
-
 
       {/* <p>{state[0].name}</p> */}
 
       <ul>
         {state.map((item) => {
           return (
-          <li key={item.id}>
-            {item.id}
-            {item.name}
-          </li>
+          <div key={item.id}>
+            <li>
+              <div>
+                {item.id}
+              </div>
+              <div>
+                <input type="text" value={item.name} onChange={handleChange} key={item.id}/>
+              </div>
+              <button>
+                編集
+              </button>
+            </li>
+
+          
+          </div>
           );
         })}
       </ul>
 
+      {/* <input type="text" value={text} onChange={handleOnChange}/> */}
 
-      <button onClick={handleClick}>
-        保存
+
+
+
+      <button onClick={handleAdd}>
+        追加
       </button>
 
 
