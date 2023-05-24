@@ -19,22 +19,24 @@ export function Header() {
     setState((prevState) => [...prevState, initialState]);
   },[foo]);
 
-  const handleChange = useCallback((e) => {
-    
-    state.map((item,index) => {
-      // console.log(item);
-      // console.log(e);
 
-      if (item.id === 0) {
-        message.push({...item, name:e.target.value});
+
+  const handleChange = useCallback((id, value) => {
+
+    state.map((item) => {
+      // e.targetからkeyかid,refを用いてどこを変えているかを知る必要がある。
+      if (item.id === id) {
+        message.push({...item, name:value});
+        // console.log(message);
       } else {
         message.push(item);
       }
     });
-    console.log(message);
+
     setState((state) => message);
+
+    return {state};
     
-    // setState(e.target.value.trim());
   },[state]);
 
 
@@ -44,7 +46,7 @@ export function Header() {
       {/* <p>{state[0].name}</p> */}
 
       <ul>
-        {state.map((item) => {
+        {state.map((item,index) => {
           return (
           <div key={item.id}>
             <li>
@@ -52,7 +54,8 @@ export function Header() {
                 {item.id}
               </div>
               <div>
-                <input type="text" value={item.name} onChange={handleChange} key={item.id}/>
+                {/* onChangeに関数でpropsを渡すことで親コンポーネントのitem.idをidとして引き継ぐことができる。 */}
+                <input type="text" value={item.name} onChange={(e) => handleChange(item.id,e.target.value)} />
               </div>
               <button>
                 編集
