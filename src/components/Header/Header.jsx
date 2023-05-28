@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+// import styles from '@/styles/Home.module.css'
+import classes from '@/components/Header/Header.module.css'
 import { useCallback, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -62,74 +63,69 @@ export function Header() {
 
   return (
     <>
-        {state.map((items,index) => {
-          return (
-          <div key={items.id}>
+      {state.map((items,index) => {
+        return (
+        <div key={items.id} className={classes.data}>
 
-            <div>
-              {items.id}
-            </div>
-            <ul>
-                {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
-                {/* nameを使用することで、e.target.nameで照合することができる。 */}
-                <li>
-                  <div >
-                    <p>名前</p>
-                    <input type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>元本</p>
-                    <input type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>毎月積立金額</p>
-                    <input type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>年利</p>
-                    <input type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>増減配当率</p>
-                    <input type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>コスト年率</p>
-                    <input type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>投資期間</p>
-                    <input type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
-                  </div>
-                </li>
-            </ul>
-          </div>
-
-
-          
-          );
-        })}
-
-
+          <h4>
+            {items.name}
+          </h4>
+          <ul className={classes.items}>
+              {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
+              {/* nameを使用することで、e.target.nameで照合することができる。 */}
+              <li>
+                <div className={classes.item}>
+                  <p>名前</p>
+                  <input type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>元本</p>
+                  <input type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>毎月積立金額</p>
+                  <input type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>年利</p>
+                  <input type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>増減配当率</p>
+                  <input type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>コスト年率</p>
+                  <input type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+              <li>
+                <div className={classes.item}>
+                  <p>投資期間</p>
+                  <input type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
+                </div>
+              </li>
+          </ul>
+        </div>
+        );
+      })}
 
       <button onClick={handleAdd}>
-        追加
+        新規追加
       </button>
 
 
-      <div className={styles.description}>
+      {/* <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/pages/index.js</code>
@@ -151,7 +147,7 @@ export function Header() {
             />
           </a>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

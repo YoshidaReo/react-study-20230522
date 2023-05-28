@@ -1,0 +1,18 @@
+.data {
+  max-width: 640px;
+  width: 640px;
+}
+
+.items {
+  display: inline-block;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
