@@ -8,43 +8,68 @@ const inter = Inter({ subsets: ['latin'] })
 export function Header() {
   const [foo, setFoo] = useState(0);
   const [state,setState] = useState([]);
+  // 更新用の空配列、オブジェクトを使用する。
   const message = [];
+  const obj ={};
 
-  const initialState = {id:foo, name:'新規作成'+String(foo)};
+
+  const initialState = {
+    id:foo,
+    name:'新規作成'+String(foo),
+    // 元本
+    principal: 10, 
+    // 毎月積立金額
+    monthlyMoney: 2,
+    // 年利
+    annualInterest: 4,
+    // 増減配当率
+    IncreaseDecreaseRate: 3,
+    // コスト年率
+    costAnnualRate: 1,
+    // 投資期間
+    investmentPeriod: 10
+  };
+
 
 
   const handleAdd = useCallback((e) => {
     setFoo((prevFoo) => prevFoo + 1);
-    // console.log(foo);
+    
     setState((prevState) => [...prevState, initialState]);
   },[foo]);
 
 
 
-  const handleChange = useCallback((id, value) => {
+  const handleChange = useCallback((prevItem, target) => {
+    // console.log(prevItem);
 
     state.map((item) => {
-      // e.targetからkeyかid,refを用いてどこを変えているかを知る必要がある。
-      if (item.id === id) {
-        message.push({...item, name:value});
-        // console.log(message);
+      if (item.id === prevItem.id) {
+        message.push({...item, [target.name] : target.value});
+
       } else {
         message.push(item);
       }
     });
-
+    // console.log(message);
     setState((state) => message);
+    console.log(state);
 
     return {state};
     
   },[state]);
 
+  const listItems = state.map(items =>
+    <li key={items.id}>
+      <h3>{items.name}</h3>
+
+    </li>
+  );
+
+
 
   return (
     <>
-
-      {/* <p>{state[0].name}</p> */}
-
       <ul>
         {state.map((item,index) => {
           return (
@@ -54,12 +79,16 @@ export function Header() {
                 {item.id}
               </div>
               <div>
+
                 {/* onChangeに関数でpropsを渡すことで親コンポーネントのitem.idをidとして引き継ぐことができる。 */}
-                <input type="text" value={item.name} onChange={(e) => handleChange(item.id,e.target.value)} />
+                <input type="text" name="name" value={item.name} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="principal" value={item.principal} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="monthlyMoney" value={item.monthlyMoney} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="annualInterest" value={item.annualInterest} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="IncreaseDecreaseRate" value={item.IncreaseDecreaseRate} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="costAnnualRate" value={item.costAnnualRate} onChange={(e) => handleChange(item, e.target)} />
+                <input type="text" name="investmentPeriod" value={item.investmentPeriod} onChange={(e) => handleChange(item, e.target)} />
               </div>
-              <button>
-                編集
-              </button>
             </li>
 
           
