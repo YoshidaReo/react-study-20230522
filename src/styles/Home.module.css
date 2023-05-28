@@ -7,6 +7,8 @@
   align-items: center;
   /* padding: 2rem; */
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  background-color: rgb(245, 255, 240);
+  color: black;
 }
 
 .description {
