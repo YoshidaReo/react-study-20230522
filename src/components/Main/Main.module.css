@@ -1,0 +1,29 @@
+.data {
+  max-width: 800px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.items {
+  display: inline-block;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  height: 1.5rem;
+}
+
+.btn {
+  padding: 1rem 3rem;
+  cursor: pointer;
+  text-align: center;
+  color: red;
+  letter-spacing: 0.1rem;
+  border-radius: 10px;
+}

@@ -1,18 +1,14 @@
-.data {
-  max-width: 640px;
-  width: 640px;
-}
-
-.items {
-  display: inline-block;
-  justify-content: space-between;
-  width: 100%;
-  
-}
-
-.item {
+.header {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  font-size: 0.8rem;
+  width: 100%;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: aliceblue;
 }
+
+.inner {
+  font-size: 1.5rem;
+}
+
