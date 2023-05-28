@@ -40,65 +40,87 @@ export function Header() {
 
 
 
-  const handleChange = useCallback((prevItem, target) => {
-    // console.log(prevItem);
+  const handleChange = useCallback((prevItems, target) => {
+    // console.log(prevItems);
 
-    state.map((item) => {
-      if (item.id === prevItem.id) {
-        message.push({...item, [target.name] : target.value});
+    state.map((items) => {
+      if (items.id === prevItems.id) {
+        message.push({...items, [target.name] : target.value});
 
       } else {
-        message.push(item);
+        message.push(items);
       }
     });
     // console.log(message);
     setState((state) => message);
-    console.log(state);
 
     return {state};
     
   },[state]);
 
-  const listItems = state.map(items =>
-    <li key={items.id}>
-      <h3>{items.name}</h3>
-
-    </li>
-  );
-
 
 
   return (
     <>
-      <ul>
-        {state.map((item,index) => {
+        {state.map((items,index) => {
           return (
-          <div key={item.id}>
-            <li>
-              <div>
-                {item.id}
-              </div>
-              <div>
+          <div key={items.id}>
 
-                {/* onChangeに関数でpropsを渡すことで親コンポーネントのitem.idをidとして引き継ぐことができる。 */}
-                <input type="text" name="name" value={item.name} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="principal" value={item.principal} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="monthlyMoney" value={item.monthlyMoney} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="annualInterest" value={item.annualInterest} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="IncreaseDecreaseRate" value={item.IncreaseDecreaseRate} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="costAnnualRate" value={item.costAnnualRate} onChange={(e) => handleChange(item, e.target)} />
-                <input type="text" name="investmentPeriod" value={item.investmentPeriod} onChange={(e) => handleChange(item, e.target)} />
-              </div>
-            </li>
+            <div>
+              {items.id}
+            </div>
+            <ul>
+                {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
+                {/* nameを使用することで、e.target.nameで照合することができる。 */}
+                <li>
+                  <div >
+                    <p>名前</p>
+                    <input type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>元本</p>
+                    <input type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>毎月積立金額</p>
+                    <input type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>年利</p>
+                    <input type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>増減配当率</p>
+                    <input type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>コスト年率</p>
+                    <input type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>投資期間</p>
+                    <input type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
+                  </div>
+                </li>
+            </ul>
+          </div>
+
 
           
-          </div>
           );
         })}
-      </ul>
-
-      {/* <input type="text" value={text} onChange={handleOnChange}/> */}
-
 
 
 
