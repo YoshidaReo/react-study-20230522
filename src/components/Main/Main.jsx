@@ -65,56 +65,65 @@ export function Main() {
       {state.map((items,index) => {
         return (
         <div key={items.id} className={classes.data}>
-
-          <h4>
+          <h3>
             {items.name}
-          </h4>
+          </h3>
           <ul className={classes.items}>
               {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
               {/* nameを使用することで、e.target.nameで照合することができる。 */}
-              <li className={classes.li}>
+              <li>
                 <div className={classes.item}>
                   <p>名前</p>
-                  <input type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>元本</p>
-                  <input type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>毎月積立金額</p>
-                  <input type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>年利</p>
-                  <input type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
-                  <p>増減配当率</p>
-                  <input type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
+                  <p>増配率</p>
+                  <input className={classes.input} type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>コスト年率</p>
-                  <input type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>投資期間</p>
-                  <input type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
           </ul>
+          <div>
+            <button onClick={handleAdd} className={classes.btn}>
+              表示
+            </button>
+            <button onClick={handleAdd} className={classes.btn}>
+              削除
+            </button>
+          </div>
+
+
         </div>
         );
       })}
