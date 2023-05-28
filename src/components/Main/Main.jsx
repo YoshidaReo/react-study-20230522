@@ -32,11 +32,7 @@ export function Main() {
 
 
 
-  const handleAdd = useCallback((e) => {
-    setFoo((prevFoo) => prevFoo + 1);
-    
-    setState((prevState) => [...prevState, initialState]);
-  },[foo]);
+
 
 
 
@@ -58,6 +54,24 @@ export function Main() {
     
   },[state]);
 
+  const handleAdd = useCallback((e) => {
+    setFoo((prevFoo) => prevFoo + 1);
+    
+    setState((prevState) => [...prevState, initialState]);
+  },[foo]);
+
+  const handleDisplay = useCallback((Items, target) => {
+    console.log(Items);
+    console.log(target);
+
+
+  },[]);
+
+  const handleDelete = useCallback((Items, target) => {
+    console.log(Items);
+    console.log(target);
+
+  },[]);
 
 
   return (
@@ -114,11 +128,11 @@ export function Main() {
                 </div>
               </li>
           </ul>
-          <div>
-            <button onClick={handleAdd} className={classes.btn}>
+          <div className={classes.btns}>
+            <button name={items.id} onClick={(e) => handleDisplay(state, e.target)} className={classes.btnMini}>
               表示
             </button>
-            <button onClick={handleAdd} className={classes.btn}>
+            <button name={items.id} onClick={(e) => handleDelete(state, e.target)} className={classes.btnMini}>
               削除
             </button>
           </div>
