@@ -122,6 +122,7 @@ export function Main() {
       <button onClick={handleAdd} className={classes.btn}>
         新規追加
       </button>
+      
     </>
   )
 }
