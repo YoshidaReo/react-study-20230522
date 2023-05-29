@@ -48,16 +48,29 @@
   text-decoration: underline 	solid red;
 }
 
-.btnMini {
-  font-size: ;
-  padding: 0.5rem 1.5rem;
+.btnMiniG {
+  padding: 0.4rem 0.6rem;
   cursor: pointer;
   text-align: center;
-  color: white;
   font-size: large;
   letter-spacing: 0.1rem;
-  border-radius: 10px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  border-radius: 80%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   background-color: #00600a;
+  color: white;
 }
+
+.btnMiniR {
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  text-align: center;
+  font-size: large;
+  letter-spacing: 0.1rem;
+  border-radius: 80%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #602800;
+  color: white;
+}
+

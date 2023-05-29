@@ -63,13 +63,20 @@ export function Main() {
   const handleDisplay = useCallback((Items, target) => {
     console.log(Items);
     console.log(target);
+    return (
+      <h2>Items.name</h2>
+    );
 
 
   },[]);
 
   const handleDelete = useCallback((Items, target) => {
+
     console.log(Items);
     console.log(target);
+
+
+    
 
   },[]);
 
@@ -129,11 +136,11 @@ export function Main() {
               </li>
           </ul>
           <div className={classes.btns}>
-            <button name={items.id} onClick={(e) => handleDisplay(state, e.target)} className={classes.btnMini}>
-              表示
+            <button name={items.id} onClick={(e) => handleDisplay(items, e.target)} className={classes.btnMiniG}>
+              <small>表示</small> 
             </button>
-            <button name={items.id} onClick={(e) => handleDelete(state, e.target)} className={classes.btnMini}>
-              削除
+            <button name={items.id} onClick={(e) => handleDelete(items, e.target)} className={classes.btnMiniR}>
+              <small>削除</small> 
             </button>
           </div>
 
