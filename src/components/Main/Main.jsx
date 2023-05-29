@@ -67,10 +67,8 @@ export function Main() {
 
   const handleDelete = useCallback((state, index) => {
     const deleteState = [...state];
-    console.log(deleteState);
-    deleteState.splice(deleteState.length-1, 1);
+    deleteState.splice(index, 1);
     setState((state) => deleteState);
-    // console.log(deleteState);
   },[]);
 
 
@@ -132,7 +130,7 @@ export function Main() {
             <button name={items.id} onClick={(e) => handleDisplay(state, e.target)} className={classes.btnMiniG}>
               <small>表示</small> 
             </button>
-            <button onClick={(e) => handleDelete(state)} className={classes.btnMiniR}>
+            <button onClick={(e) => handleDelete(state,index)} className={classes.btnMiniR}>
               <small>削除</small> 
             </button>
           </div>
