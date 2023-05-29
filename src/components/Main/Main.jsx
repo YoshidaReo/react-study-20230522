@@ -60,24 +60,17 @@ export function Main() {
     setState((prevState) => [...prevState, initialState]);
   },[foo]);
 
-  const handleDisplay = useCallback((Items, target) => {
-    console.log(Items);
-    console.log(target);
-    return (
-      <h2>Items.name</h2>
-    );
-
-
+  const handleDisplay = useCallback((state, target) => {
+    // console.log(state);
+    // console.log(target);
   },[]);
 
-  const handleDelete = useCallback((Items, target) => {
-
-    console.log(Items);
-    console.log(target);
-
-
-    
-
+  const handleDelete = useCallback((state, index) => {
+    const deleteState = [...state];
+    console.log(deleteState);
+    deleteState.splice(deleteState.length-1, 1);
+    setState((state) => deleteState);
+    // console.log(deleteState);
   },[]);
 
 
@@ -136,10 +129,10 @@ export function Main() {
               </li>
           </ul>
           <div className={classes.btns}>
-            <button name={items.id} onClick={(e) => handleDisplay(items, e.target)} className={classes.btnMiniG}>
+            <button name={items.id} onClick={(e) => handleDisplay(state, e.target)} className={classes.btnMiniG}>
               <small>表示</small> 
             </button>
-            <button name={items.id} onClick={(e) => handleDelete(items, e.target)} className={classes.btnMiniR}>
+            <button onClick={(e) => handleDelete(state)} className={classes.btnMiniR}>
               <small>削除</small> 
             </button>
           </div>
