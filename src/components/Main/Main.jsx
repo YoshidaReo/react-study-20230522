@@ -50,7 +50,7 @@ export function Main() {
     // console.log(message);
     setState((state) => message);
 
-    return {state};
+    // return {state};
     
   },[state]);
 
@@ -60,11 +60,12 @@ export function Main() {
     setState((prevState) => [...prevState, initialState]);
   },[foo]);
 
-  const handleDisplay = useCallback((state, target) => {
-    // console.log(state);
-    // console.log(target);
+  const handleDisplay = useCallback((items, index) => {
+    alert("出力します");
   },[]);
 
+
+  
   const handleDelete = useCallback((state, index) => {
     const deleteState = [...state];
     deleteState.splice(index, 1);
@@ -127,7 +128,7 @@ export function Main() {
               </li>
           </ul>
           <div className={classes.btns}>
-            <button name={items.id} onClick={(e) => handleDisplay(state, e.target)} className={classes.btnMiniG}>
+            <button name={items.id} onClick={(e) => handleDisplay(items, index)} className={classes.btnMiniG}>
               <small>表示</small> 
             </button>
             <button onClick={(e) => handleDelete(state,index)} className={classes.btnMiniR}>
