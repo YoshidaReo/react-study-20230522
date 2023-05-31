@@ -81,7 +81,7 @@ export function Main() {
       if (items.id ===state[index].id) {
         displayResult = {
           // 合計投資額
-          totalInvestment: items.principal + items.monthlyMoney * items.investmentPeriod * 12,
+          totalInvestment: Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12,
           // 最終資産
           finalAsset: 0,
           // 最終利益
