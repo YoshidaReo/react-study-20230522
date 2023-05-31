@@ -12,7 +12,6 @@ export function Main() {
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const obj ={};
-  const [boolState, setBoolState] = useState(false)
 
 
   const initialState = {
@@ -33,6 +32,17 @@ export function Main() {
     // グラフ描画
     boolState: false
   };
+
+  let displayResult = {
+    // 合計投資額
+    totalInvestment: 0,
+    // 最終資産
+    finalAsset: 0,
+    // 最終利益
+    bottomLine: 0,
+    // 総資産利益率
+    returnOnAssets: 0,
+  }
 
 
 
@@ -67,12 +77,39 @@ export function Main() {
   
 
   const handleDisplay = useCallback((state, index) => {
-    console.log(state[index].id);
-
-
     state.map((items) => {
       if (items.id ===state[index].id) {
-        message.push({...items, boolState : !items.boolState});
+        displayResult = {
+          // 合計投資額
+          totalInvestment: items.principal + items.monthlyMoney * items.investmentPeriod * 12,
+          // 最終資産
+          finalAsset: 0,
+          // 最終利益
+          bottomLine: 0,
+          // 総資産利益率
+          returnOnAssets: 0,
+        }
+
+        // id:foo,
+        // name:'新規作成'+String(foo),
+        // // 元本
+        // principal: 100000, 
+        // // 毎月積立金額
+        // monthlyMoney: 2000,
+        // // 年利
+        // annualInterest: 4,
+        // // 増減配当率
+        // IncreaseDecreaseRate: 3,
+        // // コスト年率
+        // costAnnualRate: 1,
+        // // 投資期間
+        // investmentPeriod: 10,
+        // // グラフ描画
+        // boolState: false
+
+
+        message.push({...items, boolState : !items.boolState, displayResult});
+
 
       } else {
         message.push(items);
@@ -101,6 +138,8 @@ export function Main() {
           <h3>
             {items.name}
           </h3>
+
+
           <ul className={classes.items}>
               {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
               {/* nameを使用することで、e.target.nameで照合することができる。 */}
@@ -156,13 +195,20 @@ export function Main() {
               <small>削除</small> 
             </button>
           </div>
+
           {items.boolState ? (
             <div className={classes.display}>
-              <h3>{items.name}</h3>
+              <h3>結果</h3>
+              <div>
+                
+              </div>
+              <h3>{items.displayResult.totalInvestment}</h3>
+              <p></p>
+              
             </div>
 
+
           ) : null}
-          
 
 
         </div>
