@@ -1,9 +1,10 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import classes from '@/components/Main/Main.module.css'
 import { useCallback, useState } from 'react'
 
+
 const inter = Inter({ subsets: ['latin'] })
+
 
 export function Main() {
   const [foo, setFoo] = useState(0);
@@ -11,6 +12,7 @@ export function Main() {
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const obj ={};
+  const [boolState, setBoolState] = useState(false)
 
 
   const initialState = {
@@ -27,7 +29,9 @@ export function Main() {
     // コスト年率
     costAnnualRate: 1,
     // 投資期間
-    investmentPeriod: 10
+    investmentPeriod: 10,
+    // グラフ描画
+    boolState: false
   };
 
 
@@ -60,12 +64,28 @@ export function Main() {
     setState((prevState) => [...prevState, initialState]);
   },[foo]);
 
-  const handleDisplay = useCallback((items, index) => {
-    alert("出力します");
-  },[]);
-
-
   
+
+  const handleDisplay = useCallback((state, index) => {
+    console.log(state[index].id);
+
+
+    state.map((items) => {
+      if (items.id ===state[index].id) {
+        message.push({...items, boolState : !items.boolState});
+
+      } else {
+        message.push(items);
+      }
+    });
+    console.log(message);
+
+    setState((state) => message);
+    
+  },[state]);
+
+
+
   const handleDelete = useCallback((state, index) => {
     const deleteState = [...state];
     deleteState.splice(index, 1);
@@ -128,13 +148,21 @@ export function Main() {
               </li>
           </ul>
           <div className={classes.btns}>
-            <button name={items.id} onClick={(e) => handleDisplay(items, index)} className={classes.btnMiniG}>
-              <small>表示</small> 
+            <button name={items.id} onClick={(e) => handleDisplay(state, index)} className={classes.btnMiniG}>
+              
+              {items.boolState ? <small>非表示</small> : <small>表示</small> }
             </button>
             <button onClick={(e) => handleDelete(state,index)} className={classes.btnMiniR}>
               <small>削除</small> 
             </button>
           </div>
+          {items.boolState ? (
+            <div className={classes.display}>
+              <h3>{items.name}</h3>
+            </div>
+
+          ) : null}
+          
 
 
         </div>

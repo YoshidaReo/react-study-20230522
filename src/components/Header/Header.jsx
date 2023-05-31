@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import classes from '@/components/Header/Header.module.css'
 import Link from 'next/link'
