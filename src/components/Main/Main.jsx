@@ -30,10 +30,8 @@ export function Main() {
     // 投資期間
     investmentPeriod: 10,
     // グラフ描画
-    boolState: false
-  };
+    boolState: false,
 
-  let displayResult = {
     // 合計投資額
     totalInvestment: 0,
     // 最終資産
@@ -42,7 +40,18 @@ export function Main() {
     bottomLine: 0,
     // 総資産利益率
     returnOnAssets: 0,
-  }
+  };
+
+  // let displayResult = {
+  //   // 合計投資額
+  //   totalInvestment: 0,
+  //   // 最終資産
+  //   finalAsset: 0,
+  //   // 最終利益
+  //   bottomLine: 0,
+  //   // 総資産利益率
+  //   returnOnAssets: 0,
+  // }
 
 
 
@@ -51,18 +60,46 @@ export function Main() {
 
 
   const handleChange = useCallback((prevItems, target) => {
-    // console.log(prevItems);
 
     state.map((items) => {
       if (items.id === prevItems.id) {
-        message.push({...items, [target.name] : target.value});
+        message.push({...items, 
+          [target.name] : target.value,
+          // 合計投資額
+          totalInvestment : (Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12),
+          // 最終資産
+          finalAsset: 0,
+          // 最終利益
+          bottomLine: 0,
+          // 総資産利益率
+          returnOnAssets: 0,
+
+
+    //           // 元本
+    // principal: 100000, 
+    // // 毎月積立金額
+    // monthlyMoney: 2000,
+    // // 年利
+    // annualInterest: 4,
+    // // 増減配当率
+    // IncreaseDecreaseRate: 3,
+    // // コスト年率
+    // costAnnualRate: 1,
+    // // 投資期間
+    // investmentPeriod: 10,
+        
+        });
 
       } else {
         message.push(items);
       }
-    });
-    // console.log(message);
+    }
+    // ここからdisplay結果を記載する。
+    
+    );
+    console.log(message);
     setState((state) => message);
+
 
     // return {state};
     
@@ -79,36 +116,7 @@ export function Main() {
   const handleDisplay = useCallback((state, index) => {
     state.map((items) => {
       if (items.id ===state[index].id) {
-        displayResult = {
-          // 合計投資額
-          totalInvestment: Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12,
-          // 最終資産
-          finalAsset: 0,
-          // 最終利益
-          bottomLine: 0,
-          // 総資産利益率
-          returnOnAssets: 0,
-        }
-
-        // id:foo,
-        // name:'新規作成'+String(foo),
-        // // 元本
-        // principal: 100000, 
-        // // 毎月積立金額
-        // monthlyMoney: 2000,
-        // // 年利
-        // annualInterest: 4,
-        // // 増減配当率
-        // IncreaseDecreaseRate: 3,
-        // // コスト年率
-        // costAnnualRate: 1,
-        // // 投資期間
-        // investmentPeriod: 10,
-        // // グラフ描画
-        // boolState: false
-
-
-        message.push({...items, boolState : !items.boolState, displayResult});
+        message.push({...items, boolState : !items.boolState});
 
 
       } else {
@@ -152,37 +160,37 @@ export function Main() {
               <li>
                 <div className={classes.item}>
                   <p>元本</p>
-                  <input className={classes.input} type="text" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>毎月積立金額</p>
-                  <input className={classes.input} type="text" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>年利</p>
-                  <input className={classes.input} type="text" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>増配率</p>
-                  <input className={classes.input} type="text" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>コスト年率</p>
-                  <input className={classes.input} type="text" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
                 <div className={classes.item}>
                   <p>投資期間</p>
-                  <input className={classes.input} type="text" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="tel" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
           </ul>
@@ -202,7 +210,7 @@ export function Main() {
               <div>
                 
               </div>
-              <h3>{items.displayResult.totalInvestment}</h3>
+              <h3>{items.totalInvestment}</h3>
               <p></p>
               
             </div>
