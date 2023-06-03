@@ -11,6 +11,7 @@ export function Main() {
   const [state,setState] = useState([]);
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
+  const result = [];
   const obj ={};
 
 
@@ -61,12 +62,11 @@ export function Main() {
 
   const handleChange = useCallback((prevItems, target) => {
 
+    // messageでinputを入力できるようにする。
     state.map((items) => {
       if (items.id === prevItems.id) {
         message.push({...items, 
           [target.name] : target.value,
-          totalInvestment : target.value
-        
         });
 
       } else {
@@ -74,12 +74,36 @@ export function Main() {
       }
     });
     console.log(message);
-    setState((state) => message);
 
 
-    // return {state};
-    
+    // resultで表示結果を変化できるようにする。
+    message.map((items) => {
+      if (items.id === prevItems.id) {
+        result.push({...items,
+          // 合計投資額
+          totalInvestment : Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12,
+          // // 最終資産
+          // finalAsset: 0,
+          // // 最終利益
+          // bottomLine: 0,
+          // // 総資産利益率
+          // returnOnAssets: 0,
+
+        
+        });
+
+      } else {
+        result.push(items);
+      }
+
+    });
+    console.log(result);
+
+    setState((state) => result);
+
   },[state]);
+
+
 
   const handleAdd = useCallback((e) => {
     setFoo((prevFoo) => prevFoo + 1);
