@@ -65,38 +65,14 @@ export function Main() {
       if (items.id === prevItems.id) {
         message.push({...items, 
           [target.name] : target.value,
-          // 合計投資額
-          totalInvestment : (Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12),
-          // 最終資産
-          finalAsset: 0,
-          // 最終利益
-          bottomLine: 0,
-          // 総資産利益率
-          returnOnAssets: 0,
-
-
-    //           // 元本
-    // principal: 100000, 
-    // // 毎月積立金額
-    // monthlyMoney: 2000,
-    // // 年利
-    // annualInterest: 4,
-    // // 増減配当率
-    // IncreaseDecreaseRate: 3,
-    // // コスト年率
-    // costAnnualRate: 1,
-    // // 投資期間
-    // investmentPeriod: 10,
+          totalInvestment : target.value
         
         });
 
       } else {
         message.push(items);
       }
-    }
-    // ここからdisplay結果を記載する。
-    
-    );
+    });
     console.log(message);
     setState((state) => message);
 
@@ -119,12 +95,13 @@ export function Main() {
         message.push({...items, boolState : !items.boolState});
 
 
+
       } else {
         message.push(items);
       }
     });
     console.log(message);
-
+    console.log(state);
     setState((state) => message);
     
   },[state]);
