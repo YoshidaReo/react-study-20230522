@@ -12,7 +12,6 @@ export function Main() {
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const result = [];
-  const obj ={};
 
 
   const initialState = {
@@ -204,12 +203,16 @@ export function Main() {
           {items.boolState ? (
             <div className={classes.display}>
               <h3>結果</h3>
-              <div>
-                <h3>合計投資額:{items.totalInvestment}</h3>
-                <p>最終資産額:{items.finalAsset}</p>
-                <p>最終利益:{items.bottomLine}</p>
-                <p>総資産利益率:{items.returnOnAssets}%</p>
-              </div>
+              {items.totalInvestment !== 0 ? (
+                <div>
+                  <h3>合計投資額:{items.totalInvestment}</h3>
+                  <p>最終資産額:{items.finalAsset}</p>
+                  <p>最終利益:{items.bottomLine}</p>
+                  <p>総資産利益率:{items.returnOnAssets}%</p>
+                </div>
+              ) : (
+                <div>入力してください</div>
+              )}
             </div>
 
 
