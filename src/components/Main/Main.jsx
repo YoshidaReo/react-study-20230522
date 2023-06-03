@@ -9,10 +9,12 @@ const inter = Inter({ subsets: ['latin'] })
 export function Main() {
   const [foo, setFoo] = useState(0);
   const [state,setState] = useState([]);
+  const [table,setTable] = useState([]);
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const result = [];
-  const table = [];
+  const tableDate = [];
+
 
 
   const initialState = {
@@ -75,13 +77,14 @@ export function Main() {
           finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
 
           // グラフ用配列を作成する。
-          table.push({
-            i:i,
+          tableDate.push({
+            year:i,
             totalInvestmentResult:totalInvestmentResult,
             finalAssetResult:finalAssetResult
-          })
+          });
         };
-        console.log(table);
+        console.log(tableDate);
+        setTable((table) => tableDate);
 
         // 最終利益
         let bottomLineResult = (finalAssetResult - totalInvestmentResult);
@@ -188,12 +191,6 @@ export function Main() {
                   <input className={classes.input} type="tel" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              {/* <li>
-                <div className={classes.item}>
-                  <p>コスト年率</p>
-                  <input className={classes.input} type="tel" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
-                </div>
-              </li> */}
               <li>
                 <div className={classes.item}>
                   <p>投資期間</p>
@@ -220,6 +217,10 @@ export function Main() {
                   <p>最終資産額:{items.finalAsset}</p>
                   <p>最終利益:{items.bottomLine}</p>
                   <p>総資産利益率:{items.returnOnAssets}%</p>
+                  {/* グラフ作成用 */}
+                  <div>
+                    <p>{table[1].year}</p>
+                  </div>
                 </div>
               ) : (
                 <div>入力してください</div>
