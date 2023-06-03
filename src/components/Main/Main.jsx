@@ -43,22 +43,6 @@ export function Main() {
     returnOnAssets: 0,
   };
 
-  // let displayResult = {
-  //   // 合計投資額
-  //   totalInvestment: 0,
-  //   // 最終資産
-  //   finalAsset: 0,
-  //   // 最終利益
-  //   bottomLine: 0,
-  //   // 総資産利益率
-  //   returnOnAssets: 0,
-  // }
-
-
-
-
-
-
 
   const handleChange = useCallback((prevItems, target) => {
 
@@ -88,13 +72,20 @@ export function Main() {
           finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
         };
 
-        
+        // 最終利益
+        const bottomLineResult = (finalAssetResult - totalInvestmentResult);
+
+        // 総資産利益率
+        const returnOnAssetsResult = (bottomLineResult / finalAssetResult * 100);
 
 
         result.push({...items,
           // 合計投資額
           totalInvestment : totalInvestmentResult,
           finalAsset: finalAssetResult,
+          bottomLine: bottomLineResult,
+          returnOnAssets: returnOnAssetsResult
+
         });
 
       } else {
@@ -214,12 +205,11 @@ export function Main() {
             <div className={classes.display}>
               <h3>結果</h3>
               <div>
-                
+                <h3>合計投資額:{items.totalInvestment}</h3>
+                <p>最終資産額:{items.finalAsset}</p>
+                <p>最終利益:{items.bottomLine}</p>
+                <p>総資産利益率:{items.returnOnAssets}%</p>
               </div>
-              <h3>合計投資額:{items.totalInvestment}</h3>
-              <p>最終資産額:{items.finalAsset}</p>
-              <p></p>
-              
             </div>
 
 
