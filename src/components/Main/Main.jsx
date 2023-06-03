@@ -219,7 +219,27 @@ export function Main() {
                   <p>総資産利益率:{items.returnOnAssets}%</p>
                   {/* グラフ作成用 */}
                   <div>
-                    <p>{table[1].year}</p>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>年数</th>
+                          <th>投資額</th>
+                          <th>資産額</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <tbody>
+                    {table.map((items) => {
+                      return (
+                        <tr>
+                          <td>{items.year}年</td>
+                          <td>{Math.round(items.totalInvestmentResult)}円</td>
+                          <td>{Math.round(items.finalAssetResult)}円</td>
+                        </tr>
+                      );
+                    })}
+                    </tbody>
+
                   </div>
                 </div>
               ) : (
