@@ -12,6 +12,7 @@ export function Main() {
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const result = [];
+  const table = [];
 
 
   const initialState = {
@@ -56,26 +57,37 @@ export function Main() {
         message.push(items);
       }
     });
-    console.log(message);
+    // console.log(message);
 
 
     // resultで表示結果を変化できるようにする。
     message.map((items) => {
       if (items.id === prevItems.id) {
-        // 合計投資額
-        const totalInvestmentResult = (Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12);
-
-        // 最終資産。増配率は翌年以降に適用する（一年複利計算）。
+        // 合計投資額・最終資産の初期値
+        let totalInvestmentResult = Number(items.principal);
         let finalAssetResult = Number(items.principal);
+        
         for (let i = 1; i <= Number(items.investmentPeriod); i++){
+          // 合計投資額
+          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
+
+          // 増配率は翌年以降に適用する（一年複利計算）。
           finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
+
+          // グラフ用配列を作成する。
+          table.push({
+            i:i,
+            totalInvestmentResult:totalInvestmentResult,
+            finalAssetResult:finalAssetResult
+          })
         };
+        console.log(table);
 
         // 最終利益
-        const bottomLineResult = (finalAssetResult - totalInvestmentResult);
+        let bottomLineResult = (finalAssetResult - totalInvestmentResult);
 
         // 総資産利益率
-        const returnOnAssetsResult = (bottomLineResult / finalAssetResult * 100);
+        let returnOnAssetsResult = (bottomLineResult / finalAssetResult * 100);
 
 
         result.push({...items,
@@ -84,7 +96,6 @@ export function Main() {
           finalAsset: finalAssetResult,
           bottomLine: bottomLineResult,
           returnOnAssets: returnOnAssetsResult
-
         });
 
       } else {
@@ -92,7 +103,7 @@ export function Main() {
       }
 
     });
-    console.log(result);
+    // console.log(result);
 
     setState((state) => result);
 
