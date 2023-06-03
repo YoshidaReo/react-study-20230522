@@ -26,8 +26,8 @@ export function Main() {
     annualInterest: 4,
     // 増減配当率
     IncreaseDecreaseRate: 3,
-    // コスト年率
-    costAnnualRate: 1,
+    // // コスト年率
+    // costAnnualRate: 1,
     // 投資期間
     investmentPeriod: 10,
     // グラフ描画
@@ -79,17 +79,22 @@ export function Main() {
     // resultで表示結果を変化できるようにする。
     message.map((items) => {
       if (items.id === prevItems.id) {
-        result.push({...items,
-          // 合計投資額
-          totalInvestment : Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12,
-          // // 最終資産
-          // finalAsset: 0,
-          // // 最終利益
-          // bottomLine: 0,
-          // // 総資産利益率
-          // returnOnAssets: 0,
+        // 合計投資額
+        const totalInvestmentResult = (Number(items.principal) + Number(items.monthlyMoney) * Number(items.investmentPeriod) * 12);
+
+        // 最終資産。増配率は翌年以降に適用する（一年複利計算）。
+        let finalAssetResult = Number(items.principal);
+        for (let i = 1; i <= Number(items.investmentPeriod); i++){
+          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
+        };
 
         
+
+
+        result.push({...items,
+          // 合計投資額
+          totalInvestment : totalInvestmentResult,
+          finalAsset: finalAssetResult,
         });
 
       } else {
@@ -182,12 +187,12 @@ export function Main() {
                   <input className={classes.input} type="tel" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div className={classes.item}>
                   <p>コスト年率</p>
                   <input className={classes.input} type="tel" name="costAnnualRate" value={items.costAnnualRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className={classes.item}>
                   <p>投資期間</p>
@@ -211,7 +216,8 @@ export function Main() {
               <div>
                 
               </div>
-              <h3>{items.totalInvestment}</h3>
+              <h3>合計投資額:{items.totalInvestment}</h3>
+              <p>最終資産額:{items.finalAsset}</p>
               <p></p>
               
             </div>
