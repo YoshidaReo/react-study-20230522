@@ -217,7 +217,7 @@ export function Main() {
                   <p>最終資産額:{items.finalAsset}</p>
                   <p>最終利益:{items.bottomLine}</p>
                   <p>総資産利益率:{items.returnOnAssets}%</p>
-                  {/* グラフ作成用 */}
+                  {/* グラフ作成用
                   <div>
                     <table>
                       <thead>
@@ -241,7 +241,7 @@ export function Main() {
 
                     </tbody>
 
-                  </div>
+                  </div> */}
                 </div>
               ) : (
                 <div>入力してください</div>
