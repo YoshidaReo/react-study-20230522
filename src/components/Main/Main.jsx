@@ -229,15 +229,16 @@ export function Main() {
                       </thead>
                     </table>
                     <tbody>
-                    {table.map((items) => {
-                      return (
-                        <tr>
-                          <td>{items.year}年</td>
-                          <td>{Math.round(items.totalInvestmentResult)}円</td>
-                          <td>{Math.round(items.finalAssetResult)}円</td>
-                        </tr>
-                      );
-                    })}
+                        {table.map((items) => {
+                          return (
+                            <tr>
+                              <td>{items.year}年</td>
+                              <td>{items.totalInvestmentResult}円</td>
+                              <td>{items.finalAssetResult}円</td>
+                            </tr>
+                          );
+                        })}
+
                     </tbody>
 
                   </div>
