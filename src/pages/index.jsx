@@ -4,6 +4,7 @@ import styles from '@/styles/Home.module.css'
 import { Header } from '@/components/Header/Header'
 import { Main } from '@/components/Main/Main'
 import { Footer } from '@/components/Footer/Footer'
+import { Chart } from '@/components/Chart/Chart'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,6 +25,8 @@ export default function Home() {
         <Header />
 
         <Main />
+
+        <Chart />
 
         <Footer />
 
