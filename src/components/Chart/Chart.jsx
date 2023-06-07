@@ -22,9 +22,14 @@ ChartJS.register (
   Legend
 );
 
-export function Chart() {
+export function Chart(props) {
+
+  
+  console.log(props);
+  let labels = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"];
+
   const data = {
-    labels : ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"],
+    labels : labels,
     datasets: [
       {
         label: "A社",

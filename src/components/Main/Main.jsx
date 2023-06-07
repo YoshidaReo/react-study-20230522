@@ -134,8 +134,8 @@ export function Main() {
         message.push(items);
       }
     });
-    console.log(message);
-    console.log(state);
+    // console.log(message);
+    // console.log(state);
     setState((state) => message);
     
   },[state]);
@@ -244,7 +244,7 @@ export function Main() {
 
                   </div>
                   <div>
-                    <Chart />
+                    <Chart table={table} />
                   </div>
                 </div>
               ) : (
