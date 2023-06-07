@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import classes from '@/components/Main/Main.module.css'
 import { useCallback, useState } from 'react'
+import { Chart } from '../Chart/Chart';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -241,6 +242,9 @@ export function Main() {
 
                     </tbody>
 
+                  </div>
+                  <div>
+                    <Chart />
                   </div>
                 </div>
               ) : (
