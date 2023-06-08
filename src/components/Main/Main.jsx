@@ -244,7 +244,7 @@ export function Main() {
 
                   </div>
                   <div>
-                    <Chart table={table} />
+                    <Chart table={table} state={state} />
                   </div>
                 </div>
               ) : (

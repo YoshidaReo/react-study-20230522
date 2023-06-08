@@ -24,26 +24,43 @@ ChartJS.register (
 
 export function Chart(props) {
 
-  
+  console.log(props);
   // console.log(...props.table.map(item => item["year"]));
-  console.log(...props.table.map(item => item["year"]));
+  // console.log(...props.table.map(item => item["year"]));
   // let labels = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"];
+  // 横軸
   let labels = [];
   labels.push(...props.table.map(
     item => item["year"] + "年"
   ));
 
+  // 資産額
+  let assetResult = [];
+  assetResult.push(...props.table.map(
+    item => item["finalAssetResult"]
+  ));
+  console.log(assetResult);
+
+  // 投資額
+  let investmentResult = [];
+  investmentResult.push(...props.table.map(
+    item => item["totalInvestmentResult"]
+  ));
+  console.log(investmentResult);
+
+  
   const data = {
     labels : labels,
     datasets: [
       {
-        label: "A社",
-        data: [65, 59, 60, 81, 56, 55],
+        label: "資産額",
+        // data: [65, 59, 60, 81, 56, 55],
+        data: assetResult,
         borderColor: "rgb(75, 192, 192)",
       },
       {
-        label: "B社",
-        data: [60, 55, 57, 61, 75, 50],
+        label: "投資額",
+        data: investmentResult,
         borderColor: "rgb(75, 100, 192)",
       },
     ]
