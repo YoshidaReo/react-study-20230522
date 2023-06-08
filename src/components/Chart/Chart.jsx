@@ -24,7 +24,7 @@ ChartJS.register (
 
 export function Chart(props) {
 
-  console.log(props);
+  // console.log(props);
   // console.log(...props.table.map(item => item["year"]));
   // console.log(...props.table.map(item => item["year"]));
   // let labels = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"];

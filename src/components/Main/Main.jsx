@@ -60,11 +60,15 @@ export function Main() {
         message.push(items);
       }
     });
+
     // console.log(message);
+    // ここまでOK
 
 
     // resultで表示結果を変化できるようにする。
     message.map((items) => {
+      // console.log(items);
+      // console.log(prevItems);
       if (items.id === prevItems.id) {
         // 合計投資額・最終資産の初期値
         let totalInvestmentResult = Number(items.principal);
@@ -78,13 +82,15 @@ export function Main() {
           finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
 
           // グラフ用配列を作成する。
+          // ここで工夫して、各グラフを管理する必要がある。
           tableDate.push({
+            id: prevItems.id,
             year:i,
             totalInvestmentResult:totalInvestmentResult,
             finalAssetResult:finalAssetResult
           });
         };
-        // console.log(tableDate);
+        console.log(tableDate);
         setTable((table) => tableDate);
 
         // 最終利益
