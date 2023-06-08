@@ -84,7 +84,7 @@ export function Main() {
             finalAssetResult:finalAssetResult
           });
         };
-        console.log(tableDate);
+        // console.log(tableDate);
         setTable((table) => tableDate);
 
         // 最終利益
@@ -228,23 +228,22 @@ export function Main() {
                           <th>資産額</th>
                         </tr>
                       </thead>
+                      <tbody>
+                          {table.map((items) => {
+                            return (
+                              <tr key={items.year}>
+                                <td>{items.year}年</td>
+                                <td>{Math.round(items.totalInvestmentResult)}円</td>
+                                <td>{Math.round(items.finalAssetResult)}円</td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
                     </table>
-                    <tbody>
-                        {table.map((items) => {
-                          return (
-                            <tr key={items.year}>
-                              <td>{items.year}年</td>
-                              <td>{Math.round(items.totalInvestmentResult)}円</td>
-                              <td>{Math.round(items.finalAssetResult)}円</td>
-                            </tr>
-                          );
-                        })}
-
-                    </tbody>
 
                   </div>
                   <div>
-                    <Chart table={table} state={state} />
+                    <Chart table={table} items={items} />
                   </div>
                 </div>
               ) : (

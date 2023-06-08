@@ -29,6 +29,8 @@ export function Chart(props) {
   // console.log(...props.table.map(item => item["year"]));
   // let labels = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"];
   // 横軸
+
+
   let labels = [];
   labels.push(...props.table.map(
     item => item["year"] + "年"
@@ -39,15 +41,14 @@ export function Chart(props) {
   assetResult.push(...props.table.map(
     item => item["finalAssetResult"]
   ));
-  console.log(assetResult);
+  // console.log(assetResult);
 
   // 投資額
   let investmentResult = [];
   investmentResult.push(...props.table.map(
     item => item["totalInvestmentResult"]
   ));
-  console.log(investmentResult);
-
+  // console.log(investmentResult);
   
   const data = {
     labels : labels,
@@ -73,9 +74,13 @@ export function Chart(props) {
         <Line
           data = {data}
           // options = {options}
+          // redraw
         
         ></Line>
       </div>
     </div>
   )
+
+
+
 }
