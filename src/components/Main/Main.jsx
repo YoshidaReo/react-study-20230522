@@ -89,7 +89,9 @@ export function Main() {
           // id: items.id,
           year: 0,
           totalInvestmentResult:totalInvestmentResult,
-          finalAssetResult:finalAssetResult
+          finalAssetResult:finalAssetResult,
+          bottomLine: (finalAssetResult - totalInvestmentResult),
+          returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
         });
 
 
@@ -110,7 +112,9 @@ export function Main() {
             // id: items.id,
             year: i,
             totalInvestmentResult:totalInvestmentResult,
-            finalAssetResult:finalAssetResult
+            finalAssetResult:finalAssetResult,
+            bottomLine: (finalAssetResult - totalInvestmentResult),
+            returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
           });
 
         };
@@ -128,7 +132,7 @@ export function Main() {
         message2.push(items);
       }
     });
-    console.log(message2);
+    // console.log(message2);
     setState((state) => message2);
   },[state]);
 
@@ -231,14 +235,19 @@ export function Main() {
               {items.totalInvestment !== 0 ? (
                 <div>
                   <h3>合計投資額:{items.totalInvestment}</h3>
-                  <p>最終資産額:{items.finalAsset}</p>
-                  <p>最終利益:{items.bottomLine}</p>
-                  <p>総資産利益率:{items.returnOnAssets}%</p>
-
-                  {/* グラフ作成用 */}
                   <div>
-                    <TableGenerate items={items} />
+                    <div>
+                      <p>最終資産額:{items.finalAsset}</p>
+                      <p>最終利益:{items.bottomLine}</p>
+                      <p>総資産利益率:{items.returnOnAssets}%</p>
+                    </div>
+
+                    <div>
+                      <TableGenerate items={items} />
+                      {/* <TableGenerate items={items} /> */}
+                    </div>
                   </div>
+                  {/* グラフ作成用 */}
                   <div>
                     <Chart table={items.table} items={items} />
                   </div>
