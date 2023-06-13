@@ -13,8 +13,13 @@ export function Main() {
   const [table,setTable] = useState([]);
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
-  const result = [];
+  const message2 = [];
+  const message3 = [];
   const tableDate = [];
+  // let totalInvestmentResult = [];
+  // let finalAssetResult = [];
+  let totalInvestmentResult = 0;
+  let finalAssetResult = 0;
 
 
 
@@ -35,6 +40,7 @@ export function Main() {
     investmentPeriod: 10,
     // グラフ描画
     boolState: false,
+    table: table,
 
     // 合計投資額
     totalInvestment: 0,
@@ -60,61 +66,57 @@ export function Main() {
         message.push(items);
       }
     });
-    // console.log(message);
-    // ここまでOK
 
+    // stateの中身（table)を変えるようにする。
 
-    // resultで表示結果を変化できるようにする。
     message.map((items) => {
 
-      let totalInvestmentResult = Number(items.principal);
-      let finalAssetResult = Number(items.principal);
+      // console.log(table);
+
+      totalInvestmentResult = Number(items.principal);
+      finalAssetResult = Number(items.principal);
+
+
+
       if (items.id === prevItems.id) {
-        // tableDate.push({
-        //   id:items.id
-        // });
-        // console.log(tableDate);
-        
+
+        // console.log(totalInvestmentResult);
+        // console.log(finalAssetResult);
+
         for (let i = 1; i <= Number(items.investmentPeriod); i++){
           // 合計投資額
           totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
 
+
           // 増配率は翌年以降に適用する（一年複利計算）。
           finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
 
-          tableDate.push({
-            year:i,
+          // tableDate.push({...table,
+          tableDate.push({...table,
+            // id: items.id,
+            year: i,
             totalInvestmentResult:totalInvestmentResult,
             finalAssetResult:finalAssetResult
           });
+
+
         };
-        
-        // console.log(tableDate);
-        setTable((table) => tableDate);
+        // setTable((table) => tableDate);
 
-        // 最終利益
-        let bottomLineResult = (finalAssetResult - totalInvestmentResult);
-        // 総資産利益率
-        let returnOnAssetsResult = (bottomLineResult / finalAssetResult * 100);
-
-        result.push({...items,
-          // 合計投資額
+        message2.push({...items, 
+          table : tableDate,
           totalInvestment : totalInvestmentResult,
           finalAsset: finalAssetResult,
-          bottomLine: bottomLineResult,
-          returnOnAssets: returnOnAssetsResult
+          bottomLine: (finalAssetResult - totalInvestmentResult),
+          returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
         });
 
       } else {
-        result.push(items);
+        message2.push(items);
       }
-
     });
-
-
-    setState((state) => result);
-    // console.log(table);
-
+    console.log(message2);
+    setState((state) => message2);
   },[state]);
 
 
@@ -131,9 +133,6 @@ export function Main() {
     state.map((items) => {
       if (items.id ===state[index].id) {
         message.push({...items, boolState : !items.boolState});
-
-
-
       } else {
         message.push(items);
       }
@@ -222,6 +221,7 @@ export function Main() {
                   <p>最終資産額:{items.finalAsset}</p>
                   <p>最終利益:{items.bottomLine}</p>
                   <p>総資産利益率:{items.returnOnAssets}%</p>
+
                   {/* グラフ作成用 */}
                   <div>
                     <table>
@@ -233,21 +233,21 @@ export function Main() {
                         </tr>
                       </thead>
                       <tbody>
-                          {table.map((items) => {
+                          {/* {items.table.map((items) => {
                             return (
-                              <tr key={items.year}>
-                                <td>{items.year}年</td>
-                                <td>{Math.round(items.totalInvestmentResult)}円</td>
-                                <td>{Math.round(items.finalAssetResult)}円</td>
+                              <tr key={items.table.year}>
+                                <td>{items.table.year}年</td>
+                                <td>{Math.round(items.table.totalInvestmentResult)}円</td>
+                                <td>{Math.round(items.table.finalAssetResult)}円</td>
                               </tr>
                             );
-                          })}
+                          })} */}
                       </tbody>
                     </table>
 
                   </div>
                   <div>
-                    <Chart table={table} items={items} />
+                    {/* <Chart table={table} items={items} /> */}
                   </div>
                 </div>
               ) : (
