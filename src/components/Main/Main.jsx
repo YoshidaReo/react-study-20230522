@@ -14,7 +14,7 @@ export function Main() {
   // 更新用の空配列、オブジェクトを使用する。
   const message = [];
   const message2 = [];
-  const message3 = [];
+  // const message3 = [];
   const tableDate = [];
   // let totalInvestmentResult = [];
   // let finalAssetResult = [];
@@ -233,12 +233,24 @@ export function Main() {
                         </tr>
                       </thead>
                       <tbody>
-                          {/* {items.table.map((items) => {
+
+                        {items.table.map((items) => {
+                          return (
+                            <tr>
+                              <td>{items.year}年</td>
+                              <td>{Math.round(items.totalInvestmentResult)}円</td>
+                              <td>{Math.round(items.finalAssetResult)}円</td>
+                            </tr>
+                          )
+                        })}
+
+                          
+                          {/* {items.map((items) => {
                             return (
-                              <tr key={items.table.year}>
-                                <td>{items.table.year}年</td>
-                                <td>{Math.round(items.table.totalInvestmentResult)}円</td>
-                                <td>{Math.round(items.table.finalAssetResult)}円</td>
+                              <tr key={items.year}>
+                                <td>{items.year}年</td>
+                                <td>{Math.round(items.totalInvestmentResult)}円</td>
+                                <td>{Math.round(items.finalAssetResult)}円</td>
                               </tr>
                             );
                           })} */}
