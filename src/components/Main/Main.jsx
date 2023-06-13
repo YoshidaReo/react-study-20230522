@@ -236,7 +236,7 @@ export function Main() {
 
                         {items.table.map((items) => {
                           return (
-                            <tr>
+                            <tr key={items.year}>
                               <td>{items.year}年</td>
                               <td>{Math.round(items.totalInvestmentResult)}円</td>
                               <td>{Math.round(items.finalAssetResult)}円</td>
