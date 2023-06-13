@@ -32,13 +32,13 @@ export function Chart(props) {
   // let labels = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月"];
   // 横軸
   
-  if (props.items["id"] === 1) {
-    return;
-  };
+  // if (props.items["id"] === 1) {
+  //   return;
+  // };
 
   let labels = [];
   labels.push(...props.table.map(
-    item => item["year"] + "年"
+    item => item["year"] + "年目"
   ));
 
   // 資産額

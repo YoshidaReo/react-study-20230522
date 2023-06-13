@@ -83,15 +83,8 @@ export function Main() {
         // console.log(totalInvestmentResult);
         // console.log(finalAssetResult);
 
-        for (let i = 1; i <= Number(items.investmentPeriod); i++){
-          // 合計投資額
-          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
+        for (let i = 0; i <= Number(items.investmentPeriod); i++){
 
-
-          // 増配率は翌年以降に適用する（一年複利計算）。
-          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i - 1) / 100));
-
-          // tableDate.push({...table,
           tableDate.push({...table,
             // id: items.id,
             year: i,
@@ -99,6 +92,12 @@ export function Main() {
             finalAssetResult:finalAssetResult
           });
 
+          // 合計投資額
+          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
+
+
+          // 増配率は翌年以降に適用する（一年複利計算）。
+          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i) / 100));
 
         };
         // setTable((table) => tableDate);
@@ -237,29 +236,18 @@ export function Main() {
                         {items.table.map((items) => {
                           return (
                             <tr key={items.year}>
-                              <td>{items.year}年</td>
+                              <td>{items.year}年目</td>
                               <td>{Math.round(items.totalInvestmentResult)}円</td>
                               <td>{Math.round(items.finalAssetResult)}円</td>
                             </tr>
                           )
                         })}
-
-                          
-                          {/* {items.map((items) => {
-                            return (
-                              <tr key={items.year}>
-                                <td>{items.year}年</td>
-                                <td>{Math.round(items.totalInvestmentResult)}円</td>
-                                <td>{Math.round(items.finalAssetResult)}円</td>
-                              </tr>
-                            );
-                          })} */}
                       </tbody>
                     </table>
 
                   </div>
                   <div>
-                    {/* <Chart table={table} items={items} /> */}
+                    <Chart table={items.table} items={items} />
                   </div>
                 </div>
               ) : (
