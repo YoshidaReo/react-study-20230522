@@ -83,7 +83,27 @@ export function Main() {
         // console.log(totalInvestmentResult);
         // console.log(finalAssetResult);
 
-        for (let i = 0; i <= Number(items.investmentPeriod); i++){
+        // 初期値
+        tableDate.push({...table,
+          // id: items.id,
+          year: 0,
+          totalInvestmentResult:totalInvestmentResult,
+          finalAssetResult:finalAssetResult
+        });
+
+
+
+        for (let i = 1; i <= Number(items.investmentPeriod); i++){
+
+          
+
+
+          // 合計投資額
+          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
+
+
+          // 増配率は翌年以降に適用する（一年複利計算）。
+          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i-1) / 100));
 
           tableDate.push({...table,
             // id: items.id,
@@ -91,13 +111,6 @@ export function Main() {
             totalInvestmentResult:totalInvestmentResult,
             finalAssetResult:finalAssetResult
           });
-
-          // 合計投資額
-          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
-
-
-          // 増配率は翌年以降に適用する（一年複利計算）。
-          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i) / 100));
 
         };
         // setTable((table) => tableDate);
