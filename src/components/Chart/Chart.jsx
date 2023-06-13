@@ -74,7 +74,7 @@ export function Chart(props) {
 
   return (
     <div className={classes.div}>
-      <h3>グラフ表示</h3>
+      {/* <h3>グラフ表示</h3> */}
       <div>
         <Line
           data = {data}

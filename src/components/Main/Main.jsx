@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import classes from '@/components/Main/Main.module.css'
 import { useCallback, useState } from 'react'
 import { Chart } from '../Chart/Chart';
+import { TableGenerate } from '../TableGenerate/TableGenerate';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -226,7 +227,7 @@ export function Main() {
 
           {items.boolState ? (
             <div className={classes.display}>
-              <h3>結果</h3>
+              {/* <h3>結果</h3> */}
               {items.totalInvestment !== 0 ? (
                 <div>
                   <h3>合計投資額:{items.totalInvestment}</h3>
@@ -236,28 +237,7 @@ export function Main() {
 
                   {/* グラフ作成用 */}
                   <div>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>年数</th>
-                          <th>投資額</th>
-                          <th>資産額</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        {items.table.map((items) => {
-                          return (
-                            <tr key={items.year}>
-                              <td>{items.year}年目</td>
-                              <td>{Math.round(items.totalInvestmentResult)}円</td>
-                              <td>{Math.round(items.finalAssetResult)}円</td>
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                    </table>
-
+                    <TableGenerate items={items} />
                   </div>
                   <div>
                     <Chart table={items.table} items={items} />
