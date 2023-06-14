@@ -74,26 +74,26 @@ export function ChartDisplay(props) {
     labels : labels,
     datasets: [
       {
-        type: 'line',
+        // type: Line,
         label: "資産額",
         // data: [65, 59, 60, 81, 56, 55],
         data: assetResult,
         borderColor: "rgb(75, 192, 192)",
       },
       {
-        type: 'line',
+        // type: Line,
         label: "投資額",
         data: investmentResult,
         borderColor: "rgb(75, 100, 192)",
       },
       {
-        type: 'line',
+        // type: Bar,
         label: "利益額",
         data: bottomLineResult,
         borderColor: "rgb(192, 100, 75)",
       },
       {
-        type: 'line',
+        // type: Line,
         label: "利益率",
         data: returnOnAssetsResult,
         borderColor: "rgb(75, 192, 100)",
@@ -105,12 +105,12 @@ export function ChartDisplay(props) {
     <div className={classes.div}>
       {/* <h3>グラフ表示</h3> */}
       <div>
-        <Chart
+        <Line
           data = {data}
           // options = {options}
           // redraw
         
-        ></Chart>
+        ></Line>
       </div>
     </div>
   )
