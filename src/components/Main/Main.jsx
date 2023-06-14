@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import classes from '@/components/Main/Main.module.css'
 import { useCallback, useState } from 'react'
-import { Chart } from '../Chart/Chart';
+import { ChartDisplay } from '../Chart/Chart';
 import { TableGenerate } from '../TableGenerate/TableGenerate';
 
 
@@ -132,7 +132,7 @@ export function Main() {
         message2.push(items);
       }
     });
-    console.log(message2);
+    // console.log(message2);
     setState((state) => message2);
   },[state]);
 
@@ -249,7 +249,7 @@ export function Main() {
                   </div>
                   {/* グラフ作成用 */}
                   <div>
-                    <Chart table={items.table} items={items} />
+                    <ChartDisplay table={items.table} items={items} />
                   </div>
                 </div>
               ) : (
