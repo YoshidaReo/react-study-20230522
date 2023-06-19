@@ -1,46 +1,32 @@
 import { Inter } from 'next/font/google'
 import classes from '@/components/Chart/Chart.module.css'
 import React from "react";
-// import {
-//   Chart as ChartJS,
-//   LineElement,
-//   PointElement,
-//   CategoryScale,
-//   LinearScale,
-//   Tooltip,
-//   Legend
-// } from "chart.js";
-
-// import { Chart, Bar, Line } from "react-chartjs-2";
-// // import {  } from "react-chartjs-2";
-
-// ChartJS.register (
-//   LineElement,
-//   PointElement,
-//   CategoryScale,
-//   LinearScale,
-//   Tooltip,
-//   Legend
-// );
-
 import {
   Chart as ChartJS,
-  CategoryScale,
   LinearScale,
+  CategoryScale,
   BarElement,
-  Title,
+  PointElement,
+  LineElement,
+  Legend,
   Tooltip,
-  Legend
+  LineController,
+  BarController,
+  Title
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
-  CategoryScale,
   LinearScale,
+  CategoryScale,
   BarElement,
-  Title,
+  PointElement,
+  LineElement,
+  Legend,
   Tooltip,
-  Legend
+  LineController,
+  BarController,
+  Title
 );
 
 export function ChartDisplay(props) {
@@ -115,12 +101,13 @@ export function ChartDisplay(props) {
     <div className={classes.div}>
       {/* <h3>グラフ表示</h3> */}
       <div>
-        <Bar
+        <Chart
+          type={"bar"}
           data = {data}
           // options = {options}
           // redraw
         
-        ></Bar>
+        ></Chart>
       </div>
     </div>
   )
