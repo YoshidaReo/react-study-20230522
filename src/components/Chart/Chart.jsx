@@ -29,6 +29,35 @@ ChartJS.register(
   Title
 );
 
+export const options = {
+  plugins: {
+    title: {
+      display: true,
+      text: "aaa"
+    },
+    legend: { // 凡例の設定
+      position: "bottom" // 下に配置
+    }
+  },
+  responsive: true,
+  scales: {
+    x: {
+      stacked: false
+    },
+    y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
+      stacked: false,
+      max: 1000000,
+      min: 0
+    },
+    y1: {
+      stacked: false,
+      position: "right",
+      max: 100,
+      min: 0
+    }
+  }
+};
+
 export function ChartDisplay(props) {
 
 
@@ -69,30 +98,41 @@ export function ChartDisplay(props) {
     labels : labels,
     datasets: [
       {
-        // type: Line,
+        type: "line",
         label: "資産額",
-        // data: [65, 59, 60, 81, 56, 55],
         data: assetResult,
-        backgroundColor: "rgb(75, 192, 192)",
+        borderColor: "rgb(75, 192, 192)",
+        borderWidth: 2,
+        fill: false,
+        yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
       {
-        // type: Line,
+        type: "line",
         label: "投資額",
         data: investmentResult,
-        backgroundColor: "rgb(75, 100, 192)",
+        borderColor: "rgb(75, 100, 192)",
+        borderWidth: 2,
+        fill: false,
+        yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
       {
-        // type: Bar,
+        type: "line",
         label: "利益額",
         data: bottomLineResult,
         backgroundColor: "rgb(192, 100, 75)",
+        borderWidth: 2,
+        fill: false,
+        yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
       {
-        // type: Line,
+        type: "bar",
         label: "利益率",
         data: returnOnAssetsResult,
         // borderColor: "rgb(75, 192, 100)",
         backgroundColor: "rgb(75, 192, 100)",
+        borderWidth: 2,
+        fill: false,
+        yAxisID: "y1" // optionsで設定したIDを割り振ってY軸を設定する
       },
     ]
   };
