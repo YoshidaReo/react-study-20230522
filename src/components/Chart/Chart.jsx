@@ -29,7 +29,7 @@ ChartJS.register(
   Title
 );
 
-export const options = {
+const options = {
   plugins: {
     title: {
       display: true,
@@ -46,7 +46,7 @@ export const options = {
     },
     y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
       stacked: false,
-      max: 1000000,
+      // max: 1000000,
       min: 0
     },
     y1: {
@@ -144,7 +144,7 @@ export function ChartDisplay(props) {
         <Chart
           type={"bar"}
           data = {data}
-          // options = {options}
+          options = {options}
           // redraw
         
         ></Chart>
