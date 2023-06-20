@@ -108,6 +108,7 @@ export function ChartDisplay(props) {
       }
     },
     responsive: true,
+    aspectRatio: 1.25, // 横幅を縦幅の1.25倍にする
     scales: {
       x: {
         stacked: false
@@ -164,7 +165,7 @@ export function ChartDisplay(props) {
         label: "利益率",
         data: returnOnAssetsResult,
         // borderColor: "rgb(75, 192, 100)",
-        backgroundColor: "rgba(211, 211, 211, 0.8)",
+        backgroundColor: "rgba(192, 192, 192, 0.8)",
         borderWidth: 2,
         fill: false,
         yAxisID: "y1" // optionsで設定したIDを割り振ってY軸を設定する
@@ -173,9 +174,8 @@ export function ChartDisplay(props) {
   };
 
   return (
-    <div className={classes.div}>
-      {/* <h3>グラフ表示</h3> */}
-      <div>
+    // <div>
+      <div className={classes.div}>
         <Chart
           type={"bar"}
           data = {data}
@@ -184,7 +184,7 @@ export function ChartDisplay(props) {
         
         ></Chart>
       </div>
-    </div>
+    // </div>
   )
 
 }

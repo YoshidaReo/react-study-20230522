@@ -244,7 +244,6 @@ export function Main() {
 
                     <div>
                       <TableGenerate items={items} />
-                      {/* <TableGenerate items={items} /> */}
                     </div>
                   </div>
                   {/* グラフ作成用 */}
