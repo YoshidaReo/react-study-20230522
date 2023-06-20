@@ -61,7 +61,7 @@ let options = {
 export function ChartDisplay(props) {
   
   let titleText = props.items.name;
-  console.log(titleText);
+  // console.log(titleText);
 
 
   let labels = [];

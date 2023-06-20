@@ -123,16 +123,16 @@ export function Main() {
         message2.push({...items, 
           table : tableDate,
           totalInvestment : totalInvestmentResult,
-          // finalAsset: finalAssetResult,
-          // bottomLine: (finalAssetResult - totalInvestmentResult),
-          // returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
+          finalAsset: finalAssetResult,
+          bottomLine: (finalAssetResult - totalInvestmentResult),
+          returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
         });
 
       } else {
         message2.push(items);
       }
     });
-    // console.log(message2);
+    console.log(message2);
     setState((state) => message2);
   },[state]);
 
