@@ -29,7 +29,7 @@ ChartJS.register(
   Title
 );
 
-const options = {
+let options = {
   plugins: {
     title: {
       display: true,
@@ -59,6 +59,9 @@ const options = {
 };
 
 export function ChartDisplay(props) {
+  
+  let titleText = props.items.name;
+  console.log(titleText);
 
 
   let labels = [];
@@ -93,6 +96,35 @@ export function ChartDisplay(props) {
   ));
   // bottomLine: (finalAssetResult - totalInvestmentResult),
   // returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
+
+  let options = {
+    plugins: {
+      title: {
+        display: true,
+        text: titleText
+      },
+      legend: { // 凡例の設定
+        position: "bottom" // 下に配置
+      }
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: false
+      },
+      y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
+        stacked: false,
+        // max: 1000000,
+        min: 0
+      },
+      y1: {
+        stacked: false,
+        position: "right",
+        max: 100,
+        min: 0
+      }
+    }
+  };
   
   const data = {
     labels : labels,
@@ -101,7 +133,8 @@ export function ChartDisplay(props) {
         type: "line",
         label: "資産額",
         data: assetResult,
-        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(70, 130, 180, 0.8)",
+        borderColor: "rgba(70, 130, 180, 0.8)",
         borderWidth: 2,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
@@ -110,7 +143,8 @@ export function ChartDisplay(props) {
         type: "line",
         label: "投資額",
         data: investmentResult,
-        borderColor: "rgb(75, 100, 192)",
+        backgroundColor: "rgba(139, 69, 19, 0.8)",
+        borderColor: "rgba(139, 69, 19, 0.8)",
         borderWidth: 2,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
@@ -119,7 +153,8 @@ export function ChartDisplay(props) {
         type: "line",
         label: "利益額",
         data: bottomLineResult,
-        backgroundColor: "rgb(192, 100, 75)",
+        backgroundColor: "rgba(255, 99, 71, 0.8)",
+        borderColor: "rgba(255, 99, 71, 0.8)",
         borderWidth: 2,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
@@ -129,7 +164,7 @@ export function ChartDisplay(props) {
         label: "利益率",
         data: returnOnAssetsResult,
         // borderColor: "rgb(75, 192, 100)",
-        backgroundColor: "rgb(75, 192, 100)",
+        backgroundColor: "rgba(211, 211, 211, 0.8)",
         borderWidth: 2,
         fill: false,
         yAxisID: "y1" // optionsで設定したIDを割り振ってY軸を設定する
