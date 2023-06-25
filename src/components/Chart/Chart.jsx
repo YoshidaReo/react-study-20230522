@@ -72,27 +72,28 @@ export function ChartDisplay(props) {
   // 資産額
   let assetResult = [];
   assetResult.push(...props.table.map(
-    item => item["finalAssetResult"]
+    item => Math.round(item["finalAssetResult"])
   ));
   // console.log(assetResult);
 
   // 投資額
   let investmentResult = [];
   investmentResult.push(...props.table.map(
-    item => item["totalInvestmentResult"]
+    item => Math.round(item["totalInvestmentResult"])
+    // item => item["totalInvestmentResult"]
   ));
   // console.log(investmentResult);
 
   // 利益額
   let bottomLineResult = [];
   bottomLineResult.push(...props.table.map(
-    item => item["bottomLine"]
+    item => Math.round(item["bottomLine"])
   ));
 
   // 利益率
   let returnOnAssetsResult = [];
   returnOnAssetsResult.push(...props.table.map(
-    item => item["returnOnAssets"]
+    item => Math.round(item["returnOnAssets"]*10)/10
   ));
   // bottomLine: (finalAssetResult - totalInvestmentResult),
   // returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),

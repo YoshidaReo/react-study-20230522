@@ -251,12 +251,13 @@ export function Main() {
               {/* <h3>結果</h3> */}
               {items.totalInvestment !== 0 ? (
                 <div>
-                  <h3>合計投資額:{items.totalInvestment}</h3>
+                  <h3>合計投資額:{Math.round(items.totalInvestment)}円</h3>
                   <div>
                     <div>
-                      <p>最終資産額:{items.finalAsset}</p>
-                      <p>最終利益:{items.bottomLine}</p>
-                      <p>総資産利益率:{items.returnOnAssets}%</p>
+                      <p>最終資産額:{Math.round(items.finalAsset)}円</p>
+                      {/* {Math.round(items.totalInvestmentResult)} */}
+                      <p>最終利益:{Math.round(items.bottomLine)}円</p>
+                      <p>総資産利益率:{Math.round(items.returnOnAssets)}%</p>
                     </div>
 
                     {items.detailBoolState ? (
