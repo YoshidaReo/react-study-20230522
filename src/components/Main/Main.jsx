@@ -41,7 +41,8 @@ export function Main() {
     investmentPeriod: 10,
     // グラフ描画
     boolState: false,
-    detailBoolState: false,
+    // 表の有無
+    detailBoolState: true,
     table: table,
 
     // 合計投資額
@@ -266,12 +267,12 @@ export function Main() {
                       </div>
                     ) : (
                     <div>
-                      <button onClick={(e) => handleDetailDisplay(state, index)}>
-                        <small>閉じる</small>
-                      </button>
                       <div>
                         <TableGenerate items={items} />
                       </div>
+                      <button onClick={(e) => handleDetailDisplay(state, index)}>
+                        <small>閉じる</small>
+                      </button>
                     </div>) }
 
                     
