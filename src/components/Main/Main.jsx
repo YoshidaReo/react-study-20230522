@@ -267,12 +267,12 @@ export function Main() {
                       </div>
                     ) : (
                     <div>
-                      <div>
-                        <TableGenerate items={items} />
-                      </div>
                       <button onClick={(e) => handleDetailDisplay(state, index)}>
                         <small>閉じる</small>
                       </button>
+                      <div>
+                        <TableGenerate items={items} />
+                      </div>
                     </div>) }
 
                     
