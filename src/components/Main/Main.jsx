@@ -41,6 +41,7 @@ export function Main() {
     investmentPeriod: 10,
     // グラフ描画
     boolState: false,
+    detailBoolState: false,
     table: table,
 
     // 合計投資額
@@ -161,6 +162,21 @@ export function Main() {
   },[state]);
 
 
+  const handleDetailDisplay = useCallback((state, index) => {
+    state.map((items) => {
+      if (items.id ===state[index].id) {
+        message.push({...items, detailBoolState : !items.detailBoolState});
+      } else {
+        message.push(items);
+      }
+    });
+    console.log(message);
+    // console.log(state);
+    setState((state) => message);
+    
+  },[state]);
+
+
 
   const handleDelete = useCallback((state, index) => {
     const deleteState = [...state];
@@ -242,9 +258,23 @@ export function Main() {
                       <p>総資産利益率:{items.returnOnAssets}%</p>
                     </div>
 
+                    {items.detailBoolState ? (
+                      <div>
+                        <button onClick={(e) => handleDetailDisplay(state, index)}>
+                          <small>詳細はこちら</small>
+                        </button>
+                      </div>
+                    ) : (
                     <div>
-                      <TableGenerate items={items} />
-                    </div>
+                      <button onClick={(e) => handleDetailDisplay(state, index)}>
+                        <small>閉じる</small>
+                      </button>
+                      <div>
+                        <TableGenerate items={items} />
+                      </div>
+                    </div>) }
+
+                    
                   </div>
                   {/* グラフ作成用 */}
                   <div>

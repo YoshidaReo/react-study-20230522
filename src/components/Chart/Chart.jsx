@@ -108,7 +108,7 @@ export function ChartDisplay(props) {
       }
     },
     responsive: true,
-    aspectRatio: 1.25, // 横幅を縦幅の1.25倍にする
+    aspectRatio: 1.5, // 横幅を縦幅の1.25倍にする
     scales: {
       x: {
         stacked: false
