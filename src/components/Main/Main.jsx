@@ -57,6 +57,10 @@ export function Main() {
 
 
   const handleChange = useCallback((prevItems, target) => {
+    if (isNaN(target.value) && target.name !== "name") {
+      alert("半角数字を入力してください" );
+      return;
+    };
 
     // messageでinputを入力できるようにする。
     state.map((items) => {
@@ -134,7 +138,7 @@ export function Main() {
         message2.push(items);
       }
     });
-    console.log(message2);
+    // console.log(message2);
     setState((state) => message2);
   },[state]);
 
@@ -171,7 +175,7 @@ export function Main() {
         message.push(items);
       }
     });
-    console.log(message);
+    // console.log(message);
     // console.log(state);
     setState((state) => message);
     
@@ -208,7 +212,7 @@ export function Main() {
               <li>
                 <div className={classes.item}>
                   <p>元本</p>
-                  <input className={classes.input} type="tel" name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
+                  <input className={classes.input} type="text"  name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
               <li>
