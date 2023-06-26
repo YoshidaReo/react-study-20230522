@@ -203,39 +203,39 @@ export function Main() {
           <ul className={classes.items}>
               {/* onChangeに関数でpropsを渡すことで親コンポーネントを引き継ぐことができる。 */}
               {/* nameを使用することで、e.target.nameで照合することができる。 */}
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>名前</p>
+                  <p className={classes.p}>名前</p>
                   <input className={classes.input} type="text" name="name" value={items.name} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>元本</p>
+                  <p className={classes.p}>元本</p>
                   <input className={classes.input} type="text"  name="principal" value={items.principal} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>毎月積立金額</p>
+                  <p className={classes.p}>毎月積立金額</p>
                   <input className={classes.input} type="tel" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>年利</p>
+                  <p className={classes.p}>年利</p>
                   <input className={classes.input} type="tel" name="annualInterest" value={items.annualInterest} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>増配率</p>
+                  <p className={classes.p}>増配率</p>
                   <input className={classes.input} type="tel" name="IncreaseDecreaseRate" value={items.IncreaseDecreaseRate} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>
-              <li>
+              <li className={classes.li}>
                 <div className={classes.item}>
-                  <p>投資期間</p>
+                  <p className={classes.p}>投資期間</p>
                   <input className={classes.input} type="tel" name="investmentPeriod" value={items.investmentPeriod} onChange={(e) => handleChange(items, e.target)} />
                 </div>
               </li>

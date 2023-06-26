@@ -19,6 +19,16 @@
   height: 2rem;
 }
 
+.li {
+  list-style:none;
+}
+
+
+.p {
+  font-size: 1.1rem;
+}
+
+
 .input {
   background-color: white;
   color: black;
@@ -26,6 +36,8 @@
   display: inline-block;
   text-align: right;
   font-size: large;
+  max-width: 40%;
+  /* padding: 0.5em; */
 
 }
 
