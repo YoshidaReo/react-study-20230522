@@ -25,7 +25,7 @@ export function TableGenerate(props) {
                 <td className={classes.td}>{items.year}年目</td>
                 <td className={classes.td}>{Math.round(items.totalInvestmentResult)}円</td>
                 <td className={classes.td}>{Math.round(items.finalAssetResult)}円</td>
-                <td className={classes.td}>+{Math.round(items.bottomLine)}円</td>
+                <td className={classes.td}>{items.bottomLine > 0 ? (<>+</>):(<></>)}{Math.round(items.bottomLine)}円</td>
                 <td className={classes.td}>{Math.round(items.returnOnAssets*10)/10}%</td>
               </tr>
             )
