@@ -1,5 +1,5 @@
 .data {
-  max-width: 680px;
+  max-width: 900px;
   width: 100%;
   padding: 1rem;
 }
@@ -8,6 +8,8 @@
   display: inline-block;
   justify-content: space-between;
   width: 100%;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 
@@ -15,17 +17,18 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  font-size: 0.8rem;
-  height: 2rem;
+  font-size: 2rem;
+  /* height: 2rem; */
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
-.li {
-  list-style:none;
-}
 
 
 .p {
   font-size: 1.1rem;
+  /* padding-top: 1.5rem; */
+
 }
 
 
