@@ -39,7 +39,8 @@ export function ChartDisplay(props) {
 
   let labels = [];
   labels.push(...props.table.map(
-    item => item["year"] + "年目"
+    // item => item["year"] + "年目"
+    item => item["year"]
   ));
 
   // 資産額
@@ -84,24 +85,50 @@ export function ChartDisplay(props) {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false,
-
+        // min: 0,
+        display: true,
+        title: {
+          display: true,
+          text: "経過年数",
+          font: {
+            size: 14,
+          }
+        }
       },
       y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
-        stacked: false,
+        // stacked: false,
         // max: 1000000,
         min: 0,
         ticks: {
           count: 6
+        },
+        display: true,
+        title: {
+          display: true,
+          text: "金額(円)",
+          color: "rgba(255, 0, 0, 0.8)",
+          font: {
+            size: 14,
+          }
         }
+        
       },
       y1: {
-        stacked: false,
+        // stacked: false,
         position: "right",
         max: 100,
         min: 0,
         ticks: {
           count: 6
+        },
+        display: true,
+        title: {
+          display: true,
+          text: "割合(%)",
+          color: "rgba(192, 192, 192, 0.8)",
+          font: {
+            size: 14,
+          }
         }
       }
     }
