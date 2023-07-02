@@ -29,34 +29,34 @@ ChartJS.register(
   Title
 );
 
-let options = {
-  plugins: {
-    title: {
-      display: true,
-      text: "aaa"
-    },
-    legend: { // 凡例の設定
-      position: "bottom" // 下に配置
-    }
-  },
-  responsive: true,
-  scales: {
-    x: {
-      stacked: false
-    },
-    y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
-      stacked: false,
-      // max: 1000000,
-      min: 0
-    },
-    y1: {
-      stacked: false,
-      position: "right",
-      max: 100,
-      min: 0
-    }
-  }
-};
+// let options = {
+//   plugins: {
+//     title: {
+//       display: true,
+//       text: "aaa"
+//     },
+//     legend: { // 凡例の設定
+//       position: "bottom" // 下に配置
+//     }
+//   },
+//   responsive: true,
+//   scales: {
+//     x: {
+//       stacked: false
+//     },
+//     y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
+//       stacked: false,
+//       // max: 1000000,
+//       min: 0
+//     },
+//     y1: {
+//       stacked: false,
+//       position: "right",
+//       max: 100,
+//       min: 0
+//     }
+//   }
+// };
 
 export function ChartDisplay(props) {
   
@@ -109,7 +109,8 @@ export function ChartDisplay(props) {
       }
     },
     responsive: true,
-    aspectRatio: 1.5, // 横幅を縦幅の1.25倍にする
+    // aspectRatio: 1.25, // 横幅を縦幅の1.25倍にする
+    maintainAspectRatio: false,
     scales: {
       x: {
         stacked: false
@@ -181,6 +182,7 @@ export function ChartDisplay(props) {
           type={"bar"}
           data = {data}
           options = {options}
+          height={400}
           // redraw
         
         ></Chart>
