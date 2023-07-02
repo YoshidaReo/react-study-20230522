@@ -29,36 +29,9 @@ ChartJS.register(
   Title
 );
 
-// let options = {
-//   plugins: {
-//     title: {
-//       display: true,
-//       text: "aaa"
-//     },
-//     legend: { // 凡例の設定
-//       position: "bottom" // 下に配置
-//     }
-//   },
-//   responsive: true,
-//   scales: {
-//     x: {
-//       stacked: false
-//     },
-//     y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
-//       stacked: false,
-//       // max: 1000000,
-//       min: 0
-//     },
-//     y1: {
-//       stacked: false,
-//       position: "right",
-//       max: 100,
-//       min: 0
-//     }
-//   }
-// };
 
 export function ChartDisplay(props) {
+
   
   let titleText = props.items.name;
   // console.log(titleText);
@@ -95,8 +68,6 @@ export function ChartDisplay(props) {
   returnOnAssetsResult.push(...props.table.map(
     item => Math.round(item["returnOnAssets"]*10)/10
   ));
-  // bottomLine: (finalAssetResult - totalInvestmentResult),
-  // returnOnAssets: ((finalAssetResult - totalInvestmentResult) / finalAssetResult * 100),
 
   let options = {
     plugins: {
@@ -113,18 +84,25 @@ export function ChartDisplay(props) {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false
+        stacked: false,
+
       },
       y: { // Y軸が複数あるのでyとy1のように軸にIDを付ける
         stacked: false,
         // max: 1000000,
-        min: 0
+        min: 0,
+        ticks: {
+          count: 6
+        }
       },
       y1: {
         stacked: false,
         position: "right",
         max: 100,
-        min: 0
+        min: 0,
+        ticks: {
+          count: 6
+        }
       }
     }
   };
