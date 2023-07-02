@@ -46,14 +46,14 @@ export function ChartDisplay(props) {
   // 資産額
   let assetResult = [];
   assetResult.push(...props.table.map(
-    item => Math.round(item["finalAssetResult"])
+    item => Math.round(item["finalAssetResult"])/10000
   ));
   // console.log(assetResult);
 
   // 投資額
   let investmentResult = [];
   investmentResult.push(...props.table.map(
-    item => Math.round(item["totalInvestmentResult"])
+    item => Math.round(item["totalInvestmentResult"])/10000
     // item => item["totalInvestmentResult"]
   ));
   // console.log(investmentResult);
@@ -61,7 +61,7 @@ export function ChartDisplay(props) {
   // 利益額
   let bottomLineResult = [];
   bottomLineResult.push(...props.table.map(
-    item => Math.round(item["bottomLine"])
+    item => Math.round(item["bottomLine"])/10000
   ));
 
   // 利益率
@@ -105,7 +105,7 @@ export function ChartDisplay(props) {
         display: true,
         title: {
           display: true,
-          text: "金額(円)",
+          text: "金額(万円)",
           color: "rgba(255, 0, 0, 0.8)",
           font: {
             size: 14,
