@@ -138,7 +138,7 @@ export function ChartDisplay(props) {
         data: assetResult,
         backgroundColor: "rgba(70, 130, 180, 0.8)",
         borderColor: "rgba(70, 130, 180, 0.8)",
-        borderWidth: 2,
+        borderWidth: 4,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
@@ -148,7 +148,7 @@ export function ChartDisplay(props) {
         data: investmentResult,
         backgroundColor: "rgba(139, 69, 19, 0.8)",
         borderColor: "rgba(139, 69, 19, 0.8)",
-        borderWidth: 2,
+        borderWidth: 4,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
@@ -158,7 +158,7 @@ export function ChartDisplay(props) {
         data: bottomLineResult,
         backgroundColor: "rgba(255, 99, 71, 0.8)",
         borderColor: "rgba(255, 99, 71, 0.8)",
-        borderWidth: 2,
+        borderWidth: 4,
         fill: false,
         yAxisID: "y" // optionsで設定したIDを割り振ってY軸を設定する
       },
@@ -168,7 +168,7 @@ export function ChartDisplay(props) {
         data: returnOnAssetsResult,
         // borderColor: "rgb(75, 192, 100)",
         backgroundColor: "rgba(192, 192, 192, 0.8)",
-        borderWidth: 2,
+        borderWidth: 0,
         fill: false,
         yAxisID: "y1" // optionsで設定したIDを割り振ってY軸を設定する
       },
