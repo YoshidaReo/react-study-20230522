@@ -10,7 +10,7 @@ export function TableGenerate(props) {
       <table className={classes.table}>
         <thead>
           <tr>
-            <th className={classes.th}>年数</th>
+            <th className={classes.th}>経過年数</th>
             <th className={classes.th}>投資額</th>
             <th className={classes.th}>資産額</th>
             <th className={classes.th}>利益額</th>
@@ -23,9 +23,9 @@ export function TableGenerate(props) {
             return (
               <tr key={items.year}>
                 <td className={classes.td}>{items.year}年目</td>
-                <td className={classes.td}>{Math.round(items.totalInvestmentResult)}円</td>
-                <td className={classes.td}>{Math.round(items.finalAssetResult)}円</td>
-                <td className={classes.td}>{items.bottomLine > 0 ? (<>+</>):(<></>)}{Math.round(items.bottomLine)}円</td>
+                <td className={classes.td}>{Math.round(items.totalInvestmentResult).toLocaleString()}円</td>
+                <td className={classes.td}>{Math.round(items.finalAssetResult).toLocaleString()}円</td>
+                <td className={classes.td}>{items.bottomLine > 0 ? (<>+</>):(<></>)}{Math.round(items.bottomLine).toLocaleString()}円</td>
                 <td className={classes.td}>{Math.round(items.returnOnAssets*10)/10}%</td>
               </tr>
             )

@@ -245,20 +245,20 @@ export function Main() {
                   <div>
                     <ul className={classes.ul}>
                       <li className={classes.li}>
-                        <p>合計投資額:</p>
-                        <p>{Math.round(items.totalInvestment)}円</p>
+                        <p className={classes.p}>合計投資額:</p>
+                        <p className={classes.p}>{Math.round(items.totalInvestment).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
-                        <p>最終資産額:</p>
-                        <p>{Math.round(items.finalAsset)}円</p>
+                        <p className={classes.p}>最終資産額:</p>
+                        <p className={classes.p}>{Math.round(items.finalAsset).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
-                        <p>最終利益:</p>
-                        <p>{Math.round(items.bottomLine)}円</p>
+                        <p className={classes.p}>最終利益:</p>
+                        <p className={classes.p}>{Math.round(items.bottomLine).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
-                        <p>総資産利益率:</p>
-                        <p>{Math.round(items.returnOnAssets)}%</p>
+                        <p className={classes.p}>総資産利益率:</p>
+                        <p className={classes.p}>{Math.round(items.returnOnAssets)}%</p>
                       </li>
                     </ul>
 
