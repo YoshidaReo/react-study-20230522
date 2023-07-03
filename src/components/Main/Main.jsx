@@ -240,17 +240,27 @@ export function Main() {
 
           {items.boolState ? (
             <div className={classes.display}>
-              {/* <h3>結果</h3> */}
               {items.totalInvestment !== 0 ? (
                 <div>
-                  <h3>合計投資額:{Math.round(items.totalInvestment)}円</h3>
                   <div>
-                    <div>
-                      <p>最終資産額:{Math.round(items.finalAsset)}円</p>
-                      {/* {Math.round(items.totalInvestmentResult)} */}
-                      <p>最終利益:{Math.round(items.bottomLine)}円</p>
-                      <p>総資産利益率:{Math.round(items.returnOnAssets)}%</p>
-                    </div>
+                    <ul className={classes.ul}>
+                      <li className={classes.li}>
+                        <p>合計投資額:</p>
+                        <p>{Math.round(items.totalInvestment)}円</p>
+                      </li>
+                      <li className={classes.li}>
+                        <p>最終資産額:</p>
+                        <p>{Math.round(items.finalAsset)}円</p>
+                      </li>
+                      <li className={classes.li}>
+                        <p>最終利益:</p>
+                        <p>{Math.round(items.bottomLine)}円</p>
+                      </li>
+                      <li className={classes.li}>
+                        <p>総資産利益率:</p>
+                        <p>{Math.round(items.returnOnAssets)}%</p>
+                      </li>
+                    </ul>
 
                     {items.detailBoolState ? (
                       <div>

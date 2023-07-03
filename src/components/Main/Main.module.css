@@ -23,6 +23,18 @@
   padding-bottom: 0.25rem;
 }
 
+.ul {
+  padding-left: 0;
+  padding-top: 0.5rem;
+  /* width: 200px; */
+}
+
+.li {
+  list-style: none;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
 
 
 .p {
