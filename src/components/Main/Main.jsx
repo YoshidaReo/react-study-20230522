@@ -245,12 +245,12 @@ export function Main() {
                   <div>
                     <ul className={classes.ul}>
                       <li className={classes.li}>
-                        <p className={classes.p}>合計投資額:</p>
-                        <p className={classes.p}>{Math.round(items.totalInvestment).toLocaleString()}円</p>
+                        <h3>最終資産額:</h3>
+                        <h3>{Math.round(items.finalAsset).toLocaleString()}円</h3>
                       </li>
                       <li className={classes.li}>
-                        <p className={classes.p}>最終資産額:</p>
-                        <p className={classes.p}>{Math.round(items.finalAsset).toLocaleString()}円</p>
+                        <p className={classes.p}>合計投資額:</p>
+                        <p className={classes.p}>{Math.round(items.totalInvestment).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
                         <p className={classes.p}>最終利益:</p>
