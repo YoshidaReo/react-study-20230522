@@ -31,6 +31,10 @@ export function Main() {
     principal: 100000, 
     // 毎月積立金額
     monthlyMoney: 2000,
+    // 毎年ボーナス積立金額
+    bonusYearlyMoney: 400000,
+
+
     // 年利
     annualInterest: 4,
     // 増減配当率
@@ -44,6 +48,7 @@ export function Main() {
     // 表の有無
     detailBoolState: true,
     table: table,
+
 
     // 合計投資額
     totalInvestment: 0,
@@ -108,11 +113,11 @@ export function Main() {
 
 
           // 合計投資額
-          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12);
+          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12 + Number(items.bonusYearlyMoney));
 
 
           // 増配率は翌年以降に適用する（一年複利計算）。
-          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i-1) / 100));
+          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12 + Number(items.bonusYearlyMoney)) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i-1) / 100));
 
           tableDate.push({...table,
             // id: items.id,
@@ -214,6 +219,10 @@ export function Main() {
               <div className={classes.item}>
                 <p className={classes.p}>毎月積立金額</p>
                 <input className={classes.input} type="tel" name="monthlyMoney" value={items.monthlyMoney} onChange={(e) => handleChange(items, e.target)} />
+              </div>
+              <div className={classes.item}>
+                <p className={classes.p}>ボーナス積立金額（年間）</p>
+                <input className={classes.input} type="tel" name="bonusYearlyMoney" value={items.bonusYearlyMoney} onChange={(e) => handleChange(items, e.target)} />
               </div>
               <div className={classes.item}>
                 <p className={classes.p}>年利</p>
