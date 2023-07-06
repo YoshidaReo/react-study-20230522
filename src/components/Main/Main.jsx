@@ -32,7 +32,7 @@ export function Main() {
     // 毎月積立金額
     monthlyMoney: 2000,
     // 毎年ボーナス積立金額
-    bonusYearlyMoney: 400000,
+    addBonusMoney: 4000,
 
 
     // 年利
@@ -113,11 +113,11 @@ export function Main() {
 
 
           // 合計投資額
-          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12 + Number(items.bonusYearlyMoney));
+          totalInvestmentResult = (totalInvestmentResult + Number(items.monthlyMoney) * 12 + Number(items.addBonusMoney));
 
 
           // 増配率は翌年以降に適用する（一年複利計算）。
-          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12 + Number(items.bonusYearlyMoney)) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i-1) / 100));
+          finalAssetResult = (finalAssetResult + Number(items.monthlyMoney) * 12 + Number(items.addBonusMoney)) * (1 + Number(items.annualInterest / 100) * (1 + Number(items.IncreaseDecreaseRate) * (i-1) / 100));
 
           tableDate.push({...table,
             // id: items.id,
@@ -222,7 +222,7 @@ export function Main() {
               </div>
               <div className={classes.item}>
                 <p className={classes.p}>ボーナス積立金額（年間）</p>
-                <input className={classes.input} type="tel" name="bonusYearlyMoney" value={items.bonusYearlyMoney} onChange={(e) => handleChange(items, e.target)} />
+                <input className={classes.input} type="tel" name="addBonusMoney" value={items.addBonusMoney} onChange={(e) => handleChange(items, e.target)} />
               </div>
               <div className={classes.item}>
                 <p className={classes.p}>年利</p>
@@ -254,20 +254,17 @@ export function Main() {
                   <div>
                     <ul className={classes.ul}>
                       <li className={classes.li}>
-                        <h3>最終資産額:</h3>
-                        <h3>{Math.round(items.finalAsset).toLocaleString()}円</h3>
+                        <h3>最終資産額:{Math.round(items.finalAsset).toLocaleString()}円</h3>
+                        <h3></h3>
                       </li>
                       <li className={classes.li}>
-                        <p className={classes.p}>合計投資額:</p>
-                        <p className={classes.p}>{Math.round(items.totalInvestment).toLocaleString()}円</p>
+                        <p className={classes.p}>合計投資額:{Math.round(items.totalInvestment).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
-                        <p className={classes.p}>最終利益:</p>
-                        <p className={classes.p}>{Math.round(items.bottomLine).toLocaleString()}円</p>
+                        <p className={classes.p}>最終利益:{Math.round(items.bottomLine).toLocaleString()}円</p>
                       </li>
                       <li className={classes.li}>
-                        <p className={classes.p}>総資産利益率:</p>
-                        <p className={classes.p}>{Math.round(items.returnOnAssets)}%</p>
+                        <p className={classes.p}>総資産利益率:{Math.round(items.returnOnAssets)}%</p>
                       </li>
                     </ul>
 
